@@ -561,7 +561,10 @@ Private Function FormatCellFont(ByVal sText As String, ByVal rCell As Range) As 
     Set pFont = RangeOrDisplayFormat(rCell).Font
     
     FormatCellFont = sText
-    
+
+    'Check for underline Styles
+    If pFont.Underline = 2 Then FormatCellFont = Printf("\underline{%1}", FormatCellFont)
+
     'Check for Font Styles
     If pFont.Bold Then FormatCellFont = Printf("\textbf{%1}", FormatCellFont)
     If pFont.Italic Then FormatCellFont = Printf("\textit{%1}", FormatCellFont)
